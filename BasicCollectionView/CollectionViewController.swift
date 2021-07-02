@@ -21,8 +21,8 @@ class CollectionViewController: UICollectionViewController {
     
     // Register cell classes
     collectionView.register(BasicCollectionViewCell.nib(), forCellWithReuseIdentifier: BasicCollectionViewCell.identifier)
-    collectionView.register(BasicHeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BasicHeaderCollectionViewCell.identifier)
-    collectionView.register(BasicFooterCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: BasicFooterCollectionViewCell.identifier)
+//    collectionView.register(BasicHeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BasicHeaderCollectionViewCell.identifier)
+//    collectionView.register(BasicFooterCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: BasicFooterCollectionViewCell.identifier)
 
     
     //done from the storyboard
@@ -62,74 +62,44 @@ class CollectionViewController: UICollectionViewController {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as! BasicCollectionViewCell
-    cell.configure(with: viewModel.objects[indexPath.item])
+//    cell.configure(with: viewModel.objects[indexPath.item])
+    cell.viewModel = viewModel.objects[indexPath.item]
     return cell
   }
   
-    // Support new header and footer in collection
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        switch kind {
-
-        case UICollectionView.elementKindSectionHeader:
-
-            let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BasicHeaderCollectionViewCell.identifier, for: indexPath) as! BasicHeaderCollectionViewCell
-                        
-            return headerCell
-
-        case UICollectionView.elementKindSectionFooter:
-            
-            let footerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BasicFooterCollectionViewCell.identifier, for: indexPath) as! BasicFooterCollectionViewCell
-                        
-            return footerCell
-
-        default:
-            assert(false, "Unexpected element kind")
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-            return CGSize(width: 0, height: 80.0) // scroll direction decides which of width or height is used
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForFooterInSection section: Int) -> CGSize {
-            return CGSize(width: 0, height: 40.0) // scroll direction decides which of width or height is used
-    }
-    
-  // MARK: UICollectionViewDelegate
-  
-  /*
-   // Uncomment this method to specify if the specified item should be highlighted during tracking
-   override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-   return true
-   }
-   */
-  
-  /*
-   // Uncomment this method to specify if the specified item should be selected
-   override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-   return true
-   }
-   */
-  
-  /*
-   // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-   override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-   return false
-   }
-   
-   override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-   return false
-   }
-   
-   override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-   
-   }
-   */
+//    // Support new header and footer in collection
+//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        switch kind {
+//
+//        case UICollectionView.elementKindSectionHeader:
+//
+//            let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BasicHeaderCollectionViewCell.identifier, for: indexPath) as! BasicHeaderCollectionViewCell
+//                        
+//            return headerCell
+//
+//        case UICollectionView.elementKindSectionFooter:
+//            
+//            let footerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BasicFooterCollectionViewCell.identifier, for: indexPath) as! BasicFooterCollectionViewCell
+//                        
+//            return footerCell
+//
+//        default:
+//            assert(false, "Unexpected element kind")
+//        }
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+//            return CGSize(width: 0, height: 80.0) // scroll direction decides which of width or height is used
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        referenceSizeForFooterInSection section: Int) -> CGSize {
+//            return CGSize(width: 0, height: 40.0) // scroll direction decides which of width or height is used
+//    }
   
 }
 

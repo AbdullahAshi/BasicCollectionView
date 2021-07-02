@@ -19,6 +19,8 @@ class SectionsCollectionViewController: UIViewController {
     super.viewDidLoad()
     
     collectionView.register(BasicCollectionViewCell.nib(), forCellWithReuseIdentifier: BasicCollectionViewCell.identifier)
+    collectionView.register(BasicHeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BasicHeaderCollectionViewCell.identifier)
+    collectionView.register(BasicFooterCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: BasicFooterCollectionViewCell.identifier)
     
     //done from the storyboard
     //collectionView.delegate = self
@@ -59,9 +61,45 @@ extension SectionsCollectionViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as! BasicCollectionViewCell
-    cell.configure(with: viewModel.collectionObject[indexPath.section].items[indexPath.item])
+    cell.viewModel = viewModel.collectionObject[indexPath.section].items[indexPath.item]
     return cell
   }
+    
+    // Support new header and footer in collection
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        switch kind {
+
+        case UICollectionView.elementKindSectionHeader:
+
+            let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BasicHeaderCollectionViewCell.identifier, for: indexPath) as! BasicHeaderCollectionViewCell
+            headerCell.textLabel.text = viewModel.collectionObject[indexPath.section].header?.title
+            return headerCell
+
+        case UICollectionView.elementKindSectionFooter:
+            
+            let footerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BasicFooterCollectionViewCell.identifier, for: indexPath) as! BasicFooterCollectionViewCell
+            footerCell.textLabel.text = viewModel.collectionObject[indexPath.section].footer?.title
+                        
+            return footerCell
+
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(width: 0, height: 80.0) // scroll direction decides which of width or height is used
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+            return CGSize(width: 0, height: 40.0) // scroll direction decides which of width or height is used
+    }
+    
+    // Only top and bottom spaced if vertical scrolling (dependent on scroll direction)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init(top: 20, left: -20, bottom: 20, right: -20)
+    }
   
 }
 

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 protocol BasicViewModelDelegate: class {
   func valuesDidChange()
@@ -15,16 +14,16 @@ protocol BasicViewModelDelegate: class {
 
 class BasicViewModel {
   
-  private let object1 = BasicObject(image: UIImage(named: "1")!, title: "car 1 title", subTitle: "car 1 subtitle", type: .basicCellOne)
-  private let object2 = BasicObject(image: UIImage(named: "2")!, title: "car 2 title", subTitle: "car 2 subtitle", type: .basicCellOne)
-  private let object3 = BasicObject(image: UIImage(named: "3")!, title: "car 3 title", subTitle: "car 3 subtitle", type: .basicCellOne)
-  private let object4 = BasicObject(image: UIImage(named: "4")!, title: "car 4 title", subTitle: "car 4 subtitle", type: .basicCellOne)
-  private let object5 = BasicObject(image: UIImage(named: "5")!, title: "car 5 title", subTitle: "car 5 subtitle", type: .basicCellOne)
-  private let object6 = BasicObject(image: UIImage(named: "6")!, title: "car 6 title", subTitle: "car 6 subtitle", type: .basicCellOne)
-  private let object7 = BasicObject(image: UIImage(named: "7")!, title: "car 7 title", subTitle: "car 7 subtitle", type: .basicCellOne)
-  private let object8 = BasicObject(image: UIImage(named: "8")!, title: "car 8 title", subTitle: "car 8 subtitle", type: .basicCellOne)
-  private let object9 = BasicObject(image: UIImage(named: "9")!, title: "car 9 title", subTitle: "car 9 subtitle", type: .basicCellOne)
-  private let object10 = BasicObject(image: UIImage(named: "10")!, title: "car 10 title", subTitle: "car 10 subtitle", type: .basicCellOne)
+  private let object1 = BasicObject(image: "1", title: "car 1 title", subTitle: "car 1 subtitle", type: .basicCellOne)
+  private let object2 = BasicObject(image: "2", title: "car 2 title", subTitle: "car 2 subtitle", type: .basicCellOne)
+  private let object3 = BasicObject(image: "3", title: "car 3 title", subTitle: "car 3 subtitle", type: .basicCellOne)
+  private let object4 = BasicObject(image: "4", title: "car 4 title", subTitle: "car 4 subtitle", type: .basicCellOne)
+  private let object5 = BasicObject(image: "5", title: "car 5 title", subTitle: "car 5 subtitle", type: .basicCellOne)
+  private let object6 = BasicObject(image: "6", title: "car 6 title", subTitle: "car 6 subtitle", type: .basicCellOne)
+  private let object7 = BasicObject(image: "7", title: "car 7 title", subTitle: "car 7 subtitle", type: .basicCellOne)
+  private let object8 = BasicObject(image: "8", title: "car 8 title", subTitle: "car 8 subtitle", type: .basicCellOne)
+  private let object9 = BasicObject(image: "9", title: "car 9 title", subTitle: "car 9 subtitle", type: .basicCellOne)
+  private let object10 = BasicObject(image: "10", title: "car 10 title", subTitle: "car 10 subtitle", type: .basicCellOne)
   
   weak var delegateViewController: BasicViewModelDelegate!
   

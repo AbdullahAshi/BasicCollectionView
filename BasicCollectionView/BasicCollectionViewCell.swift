@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BasicObjectProtocol {
-  var image: UIImage { get }
+  var image: String { get }
   var title: String { get }
   var subTitle: String { get }
 }
@@ -22,14 +22,20 @@ class BasicCollectionViewCell: UICollectionViewCell {
   
   static let identifier: String = "BasicCollectionViewCell"
   
+    var viewModel: BasicObjectProtocol? {
+        didSet {
+            assert(viewModel != nil)
+            configure(with: viewModel!)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
   
-  func configure(with object: BasicObjectProtocol) {
-    //TODO: update UI
-    imageView.image = object.image
+  private func configure(with object: BasicObjectProtocol) {
+    imageView.image = UIImage(named: object.image)
     titleLabel.text = object.title
     subTitleLabel.text = object.subTitle
   }

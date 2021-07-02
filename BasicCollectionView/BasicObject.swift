@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 protocol TypedObjectProtocol {
   var type: BasicObject.CellType { get }
@@ -22,19 +21,19 @@ struct BasicObject: BasicTypedProtocol {
     case basicCellTwo
   }
   
-  var image: UIImage
+  var image: String
   var title: String
   var subTitle: String
   var type: CellType = .basicCellOne
 }
 
 struct BasicHeader {
-  var image: UIImage
+  var image: String
   var title: String
 }
 
 struct BasicFooter {
-  var image: UIImage
+  var image: String
   var title: String
 }
 

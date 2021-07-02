@@ -55,7 +55,8 @@ extension SingleColumnCollectionViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as! BasicCollectionViewCell
-    cell.configure(with: viewModel.objects[indexPath.item])
+//    cell.configure(with: viewModel.objects[indexPath.item])
+    cell.viewModel = viewModel.objects[indexPath.item]
     return cell
   }
   
